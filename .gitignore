@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.log
+
+# Notes de prod / teleprompters - ne jamais publier
+_prod/

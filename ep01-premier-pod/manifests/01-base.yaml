@@ -1,0 +1,14 @@
+# Midi Kube — Épisode 1 — Le pod "naïf"
+# Il tourne. Il marche. Mais il tourne en root et a toutes les permissions.
+# C'est exactement ce qu'on apprend à NE PAS faire.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  namespace: demo
+spec:
+  containers:
+  - name: web
+    image: nginx:stable
+    ports:
+    - containerPort: 80

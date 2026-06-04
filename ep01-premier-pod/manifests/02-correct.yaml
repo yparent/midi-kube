@@ -1,0 +1,31 @@
+# Midi Kube — Épisode 1 — Le pod fait correctement
+# Même app, même résultat. Mais propre dès le départ.
+#   - runAsNonRoot          : ne tourne pas en root
+#   - allowPrivilegeEscalation: false  -> ne peut pas redevenir root
+#   - capabilities drop ALL : on retire tous les super-pouvoirs Linux
+#   - image non privilégiée : écoute sur 8080, pensée pour tourner sans root
+#   - resources             : on borne CPU/RAM (un pod ne mange pas tout le noeud)
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  namespace: demo
+spec:
+  securityContext:
+    runAsNonRoot: true
+  containers:
+  - name: web
+    image: nginxinc/nginx-unprivileged:stable
+    ports:
+    - containerPort: 8080
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+    resources:
+      requests:
+        cpu: "50m"
+        memory: "64Mi"
+      limits:
+        cpu: "200m"
+        memory: "128Mi"
