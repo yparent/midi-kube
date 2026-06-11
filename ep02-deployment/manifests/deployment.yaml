@@ -1,0 +1,35 @@
+# Midi Kube — Épisode 2 — Rendre le pod immortel
+# On n'utilise JAMAIS un pod tout nu : on l'enveloppe dans un Deployment.
+# Le Deployment est un "manager" qui maintient en permanence le nombre de pods voulu.
+# Bonus : toutes les bonnes pratiques de l'épisode 1 sont conservées.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: demo
+  labels:
+    app: web
+spec:
+  replicas: 2                       # 2 pods en permanence : pas de point de défaillance unique
+  selector:
+    matchLabels:
+      app: web                      # le Deployment gère les pods portant ce label (le "badge")
+  template:                         # le moule des pods que le Deployment va créer
+    metadata:
+      labels:
+        app: web                    # chaque pod reçoit ce badge
+    spec:
+      securityContext:
+        runAsNonRoot: true          # bonne pratique ép.1 : ne tourne pas en root
+      containers:
+      - name: web
+        image: nginxinc/nginx-unprivileged:stable
+        ports:
+        - containerPort: 8080
+        securityContext:
+          allowPrivilegeEscalation: false   # ne peut pas redevenir root
+          capabilities:
+            drop: ["ALL"]                    # tous les super-pouvoirs Linux retirés
+        resources:
+          requests: { cpu: "50m", memory: "64Mi" }
+          limits:   { cpu: "200m", memory: "128Mi" }

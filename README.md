@@ -1,6 +1,6 @@
 # ☸️ Midi Kube
 
-> **30 minutes. Le jeudi. À 13h00.**
+> **30 minutes. Le jeudi. À 12h30.**
 > La pause déj qui te fait monter en compétence sur Kubernetes — un concept par semaine,
 > **avec sa bonne pratique intégrée dès le départ.**
 
@@ -47,7 +47,7 @@ kubectl get nodes            # doit afficher un node Ready
 | # | Sujet | Concept de base | Bonne pratique intégrée | Fichiers |
 |---|-------|-----------------|-------------------------|----------|
 | 01 | **Ton premier pod, fait correctement** | Pod, déclaratif, YAML | Ne pas tourner en root | [ep01-premier-pod](ep01-premier-pod) |
-| 02 | Rendre le pod immortel | Deployment | *(à venir)* | — |
+| 02 | **Rendre le pod immortel** | Deployment | Jamais de pod nu + 2 répliques | [ep02-deployment](ep02-deployment) |
 | 03 | Lui donner une adresse stable | Service | *(à venir)* | — |
 | 04 | Sortir la config du code | ConfigMap / Secret | *(à venir)* | — |
 | 05 | Savoir s'il est en vie | Probes | *(à venir)* | — |
