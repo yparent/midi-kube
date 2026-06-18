@@ -1,6 +1,6 @@
 # ☸️ Midi Kube
 
-> **30 minutes. Le jeudi. À 12h30.**
+> **30 minutes. Le jeudi. À 13h00.**
 > La pause déj qui te fait monter en compétence sur Kubernetes — un concept par semaine,
 > **avec sa bonne pratique intégrée dès le départ.**
 
