@@ -1,0 +1,19 @@
+# Midi Kube — Épisode 3 — Donner une adresse stable à ton appli
+# Le Service = une porte d'entrée fixe devant des pods dont les IP changent.
+# Il route le trafic vers les pods portant le bon "badge" (selector), et répartit la charge.
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: demo
+  labels:
+    app: web
+spec:
+  type: ClusterIP            # adresse interne stable. Le défaut ET la bonne pratique :
+                             # on n'expose pas plus que nécessaire (moins de surface d'attaque).
+  selector:
+    app: web                 # route vers les pods portant ce badge (même mécanisme que le Deployment)
+  ports:
+  - name: http
+    port: 80                 # le port du Service (l'adresse stable que les autres appellent)
+    targetPort: 8080         # le port du conteneur (nginx-unprivileged écoute sur 8080)

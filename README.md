@@ -48,7 +48,7 @@ kubectl get nodes            # doit afficher un node Ready
 |---|-------|-----------------|-------------------------|----------|
 | 01 | **Ton premier pod, fait correctement** | Pod, déclaratif, YAML | Ne pas tourner en root | [ep01-premier-pod](ep01-premier-pod) |
 | 02 | **Rendre le pod immortel** | Deployment | Jamais de pod nu + 2 répliques | [ep02-deployment](ep02-deployment) |
-| 03 | Lui donner une adresse stable | Service | *(à venir)* | — |
+| 03 | **Lui donner une adresse stable** | Service | ClusterIP, exposition minimale | [ep03-service](ep03-service) |
 | 04 | Sortir la config du code | ConfigMap / Secret | *(à venir)* | — |
 | 05 | Savoir s'il est en vie | Probes | *(à venir)* | — |
 | … | … vers la sécu (NetworkPolicy, RBAC, seccomp) → CKS | | | |
